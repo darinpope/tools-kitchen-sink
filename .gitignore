@@ -1,0 +1,6 @@
+grype/
+syft/
+trivy/
+grype.tar.gz
+syft.tar.gz
+trivy.tar.gz
