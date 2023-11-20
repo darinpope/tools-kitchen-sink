@@ -30,4 +30,6 @@ tar zxvf syft.tar.gz -C syft
 docker build -t darinpope/tools-kitchen-sink:latest .
 
 # Push image
+echo $DOCKERHUB_API_TOKEN | docker login -u $DOCKERHUB_USER --password-stdin
+docker image push darinpope/tools-kitchen-sink:latest
 
