@@ -26,10 +26,14 @@ tar zxvf grype.tar.gz -C grype
 curl -L -o syft.tar.gz https://github.com/anchore/syft/releases/download/v$SYFT_VERSION/syft_$(echo $SYFT_VERSION)_linux_amd64.tar.gz
 tar zxvf syft.tar.gz -C syft
 
-# Build image
-docker build -t darinpope/tools-kitchen-sink:latest .
+# Build images
+docker build -f Dockerfile-trivy -t darinpope/trivy:${TRIVY_VERSION} .
+docker build -f Dockerfile-grype -t darinpope/grype:${GRYPE_VERSION} .
+docker build -f Dockerfile-syft -t darinpope/syft:${SYFT_VERSION} .
 
 # Push image
 echo $DOCKERHUB_API_TOKEN | docker login -u $DOCKERHUB_USER --password-stdin
-docker image push darinpope/tools-kitchen-sink:latest
+docker image push darinpope/trivy:${TRIVY_VERSION}
+docker image push darinpope/grype:${GRYPE_VERSION}
+docker image push darinpope/syft:${SYFT_VERSION}
 
