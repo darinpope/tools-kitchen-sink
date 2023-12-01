@@ -1,3 +1,4 @@
 FROM cgr.dev/chainguard/wolfi-base
-
 COPY grype/grype /usr/bin
+RUN adduser -D nonroot
+USER nonroot
