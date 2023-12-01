@@ -1,4 +1,3 @@
 FROM cgr.dev/chainguard/wolfi-base
 COPY syft/syft /usr/bin
-RUN adduser -D nonroot
 USER nonroot
